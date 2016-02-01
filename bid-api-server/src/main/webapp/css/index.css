@@ -1,0 +1,236 @@
+/**块**/
+.conBlock {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    float: left;
+}
+
+.conBlockL, .conBlockR {
+    width: 249px;
+    height: 250px;
+    float: left;
+}
+
+.conBlockLBody, .conBlockCBody, .conBlockRBody {
+    /*border-top: solid 1px gray;*/
+    margin-top: 10px;
+}
+
+.conBlockC {
+    width: 680px;
+    height: 250px;
+    float: left;
+    margin: 0 5px;
+}
+.spBlockText {
+    background: url("../img/tabbg.gif") repeat-x;
+    display: block;
+    width: 100px;
+    height: 40px;
+    background: #CA0002;
+    float: left;
+}
+.spBlockText-2{width:240px;}
+
+.spMore {
+    display: block;
+    float: right;
+    width: 50px;
+    font-size: 12px;
+    color: #ababab; /*#A0A0A0*/
+    padding-right: 10px;
+    cursor:pointer;
+}
+.spMore:hover{
+    color:red;
+}
+.conBlockLHead, .conBlockLBody, .conBlockCHead, .conBlockCBody {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+.conBlockLHead, .conBlockCHead {
+    height: 40px;
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 40px;
+    text-indent: 1em;    
+    background-color: #f6f6f6;
+
+}
+
+.conBlockLBody ul {
+    width: 100%;
+    float: left;
+}
+
+.conBlockLBody ul li, .conBlockCBody ul li {
+    display: block;
+    width: 98%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 24px;
+    height: 24px;
+    text-wrap: normal;
+}
+
+.fixBlock {
+    position: fixed;
+    right: 10px;
+    top: 170px;
+    float: right;
+}
+
+.conBlockCBody ul {
+    width: 50%;
+    text-align: left;
+    float: left;
+}
+
+.ul-home-2cols ul {
+    width: 100%;
+    overflow: hidden;
+}
+
+.ul-home-2cols ul li {
+    width: 46%;
+    overflow: hidden;
+    margin-left:3%;
+    float: left;
+}
+.spTime{float:right;}
+.conBlockCBody .pre {
+    color: red;
+}
+
+.fixBlock-2 {
+    top:400px;
+}
+
+.fixBlock-3 {
+    top: 550px;
+}
+
+.fixBlock-4 {
+    top: 780px;
+}
+
+/*登陆盒子*/
+.login-box {
+    height: 240px;
+    float: left;
+    border: 2px solid #dedede;
+    width: 100%;
+    float: right;
+}
+
+.login-box-warp {
+    border: 2px solid #dedede;
+    border-top: 2px solid #f40;
+    padding: 20px 30px 0 10px;
+    width: 250px;
+    float: right;
+    margin-right: 150px
+}
+
+.login-box-head, .login-box-head-r {
+    width: 49.5%;
+    height: 20px;
+    font-size: 14px;
+    color: #999;
+    float: left;
+    text-indent: 28px;
+    border-bottom: solid 2px red;
+    padding: 10px 0px;
+}
+
+.login-box-head-r {
+    border-bottom: solid 2px #e3e3e3;
+}
+
+.icon-user {
+    background: url("../img/userImg.png") left top;
+}
+
+.icon-pwd {
+    background: url("../img/userPwd.png") left top;
+}
+
+.icon-user, .icon-pwd {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.login-box-info {
+    width: 200px;
+    float: left;
+}
+
+.login-box-in {
+    width: 100%;
+    margin-top: 20px;
+    height: 32px;
+    border: solid 1px #e3e3e3;
+    margin-left: 20px;
+}
+
+.box-userPwd {
+    margin-top: 15px;
+}
+
+.login-box-in input {
+    width: 160px;
+    height: 30px;
+    line-height:30px;
+    float: left;
+    border: none;
+}
+
+/*找回密码  免费注册  盒子*/
+.login-box-other {
+    width: 100%;
+    float: left;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.aFindPwd {
+    width: 100px;
+    float: left;
+}
+
+.aRegist {
+    width: 80px;
+    float: right;
+    text-align: right;
+}
+
+.login-box-Submit {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.login-box-Submit input {
+    width: 80%;
+    height: 40px;
+    color: white;
+    font-family: simhei;
+    font-size: 18px;
+    word-spacing: 8px;
+
+    background-color: #CA0002;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+}

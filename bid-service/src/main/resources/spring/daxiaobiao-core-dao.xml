@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<bean id="baseDataSourceDaxiaobiao" abstract="true" class="com.alibaba.druid.pool.DruidDataSource">
+		<property name="initialSize" value="#{propertyConfigurerForDaxiaobiaoCore['daxiaobiao.db.pool.initial-size']}" />
+		<property name="minIdle" value="#{propertyConfigurerForDaxiaobiaoCore['daxiaobiao.db.pool.min-idle']}" />
+		<property name="maxActive" value="#{propertyConfigurerForDaxiaobiaoCore['daxiaobiao.db.pool.max-pool-size']}" />
+	</bean>
+	
+	<bean id="dataSourceDaxiaobiao" parent="baseDataSourceDaxiaobiao" destroy-method="close">
+		<property name="url" value="#{propertyConfigurerForDaxiaobiaoCore['daxiaobiao.db.url']}" />
+		<property name="username" value="#{propertyConfigurerForDaxiaobiaoCore['daxiaobiao.db.username']}" />
+		<property name="password" value="#{propertyConfigurerForDaxiaobiaoCore['daxiaobiao.db.password']}" />
+	</bean>
+
+	<bean id="sqlSessionFactoryDaxiaobiao" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSourceDaxiaobiao" />
+		<property name="configLocation" value="classpath:spring/mybatis-daxiaobiao-core.xml" />
+	</bean>
+
+	<bean id="sqlSessionDaxiaobiao" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryDaxiaobiao" />
+	</bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryDaxiaobiao"/>
+        <property name="basePackage" value="cn.daxiaobiao.core.dao"/>
+    </bean>
+
+</beans>

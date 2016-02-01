@@ -1,0 +1,259 @@
+#mainPageBody {
+    background: url("../img/bg.png") 0% 0% repeat-x;
+    width: 100%;
+    height: auto;
+}
+#top a, #top span {
+    color: #666;
+    font-size: 12px;
+}
+.top {
+    width: 1200px;
+    height: 179px;
+    background: none 0% 0% repeat scroll transparent;    margin:0 auto;
+}
+.trHeader {
+    float: left;
+}
+.tlHeader a {
+    margin: 0 8px;
+}
+.tHeader {
+    height: 37px;
+    line-height: 37px;
+    font-size: 12px;
+}.tlHeader {
+    width: 286px;
+}
+.trHeader .kefuPhone {
+    width: 196px;
+}
+.trHeader .rnav {
+    padding: 0 10px;
+    text-align: center;
+    height: 15px;
+    line-height: 15px;
+}
+ul.clearfix li {
+    float: left;
+}
+#dvHeadLogo {
+    width: 1200px;
+    float: left;
+    height: 92px;
+}
+#dvHeadLogoL {
+    width: 300px;
+    height: 50px;
+    float: left;
+    margin-top: 20px;
+}
+#dvHeadLogoR {
+    width: 880px;
+    height: 50px;
+    float: right;}
+/* 分站导航*/
+#sddm a.more:link, #sddm a.more:visited {
+    color: #f00;
+    font-weight: bold;
+}
+#sddm {
+    margin: 0 auto;
+    padding: 0;
+    z-index: 30;
+    width: 500px;
+    height: 27px;
+    line-height: 27px;
+    float: right;
+}
+#sddm li {
+    float: right;
+    position: relative;
+}
+#sddm li a:link, #sddm li a:visited {
+    display: block;
+    margin: 0 1px 0 0;
+    padding: 0 10px;
+    color: #666;
+    text-align: center;
+    text-decoration: none
+}
+#sddm li a:hover {
+    color: #F00;
+}
+#sddm #m5 {
+    position: absolute;
+    visibility: hidden;
+    margin: 0;
+    padding: 0;    background: #FFF;
+    border: 1px solid #F00;
+    z-index: 10000;
+    width: 350px;
+    position: absolute;
+    right: 0;
+    margin-top: 0px;
+}
+#sddm #m5 .fenquwrap li a {
+    position: relative;
+    display: block;
+    line-height: 20px;
+    float: left;
+    margin: 0;
+    padding: 0 10px;
+    width: auto;    text-align: left;
+    background: #FFF;
+    color: #2875DE;
+    z-index: 999;
+}
+#sddm #m5 .fenquwrap li a:hover {
+    color: #F00;
+}
+#sddm #m5 .fenquwrap {width: 320px;padding: 5px;}
+#sddm #m5 .fenquwrap li {width: 320px;line-height: 20px;padding: 5px 0;}
+#sddm #m5 .fenquwrap .fenqu {display: block; float: left;width: 51px;height: 19px;line-height: 19px;font-size: 12px;font-weight: bold;background: url(http://img_al.qianlima.com/newDefault/images/1_bg3.jpg) no-repeat left center;text-align: center;
+}
+/*搜索框*/
+
+#dvSearch, #dvSearchTab {
+    width: 650px;
+    height: 40px;
+    float: left;
+    line-height: 30px;
+    background-color: #CA0002;
+}
+
+#dvSearchTab {
+    background-color: transparent;
+}
+
+#dvSearchTab ul {
+    list-style: none;
+    float: left;
+}
+
+#dvSearchTab ul li {
+    width: 50px;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#dvSearchTab a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    color: #000;
+}
+
+#dvSearchTab .tabLinkNow {
+    background: url("../img/icon_tran.png") no-repeat 15px bottom;
+    -webkit-background-size: 15px 8px;
+    background-size: 15px 8px;
+}
+
+#dvSearchIco {
+    width: 100px;
+    height: 40px;
+    float: left;
+    text-align: center;
+}
+#dvSearch a,#dvSearch #dvSearchIco {
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    line-height: 40px;
+    background:transparent;
+    border:none;
+}
+#txtSearch {
+    width: 538px;
+    margin-top: 1px;
+    height: 36px;	line-height: 36px;
+    float: left;
+    font-size: 16px;
+    text-indent: 0.5em;
+    margin-left: 1px;
+}
+#govlink {
+    width: 150px;
+    height: 40px;
+    float: left;
+    margin-left: 30px;
+    margin-top: -20px;
+}
+#govlink a {
+    width: 150px;
+    height: 10px;
+    font-size: 10px;
+    line-height: 10px;
+    float: left;
+    display: block;
+    background: url("../img/guohui.gif") no-repeat left top;
+    background-size: 8% 100%;
+    text-indent: 1.5em;
+    color: darkgray;
+}
+
+/*菜单导航*/
+#dvNav {
+    width: 1002px;
+    float: left;
+    height: 50px;
+}
+
+#dvNav ul {
+    width: 100%;
+    height: 50px;
+    float: left;
+}
+
+#dvNav ul li {
+    width: 125px;
+    float: left;
+    padding: 0px;
+}
+
+#dvNav ul li a {
+    display: block;
+    padding: 0px;
+    color: #FFFFFF;
+    font: 18px/50px SimSun, 'microsoft yahei', Verdana, Arial;
+    font-weight: 500;
+    text-align: center;
+    background: url("../img/navBgNow.png") left top repeat-x;
+    background-size: 100% 100%;
+}
+
+#dvNav ul .menNow {
+    color: #303030;
+    background: url("../img/navBg.png") left top repeat-x;
+    background-size: 100% 100%;
+}
+
+/*foot*/
+.foot {
+    width: 100%;
+    height: auto;
+    float: left;
+    border-top: solid 1px orange;
+    margin-top: 10px;
+}
+
+.foot_nav, .foot_ComInfo {
+    width: 1002px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/***cont End**/
+.fontTitle1 {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.fontLst1 {
+    font-size: 12px;
+}

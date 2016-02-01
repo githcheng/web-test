@@ -1,0 +1,71 @@
+
+#content {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+/*ҳ�������*/
+.dvTabLft {
+    width: 300px;
+    height: 100%;
+    float: right;
+}
+
+.dvTabLft .conBlockL {
+    border: solid 1px darkgray;
+    margin-top: 10px;
+
+}
+
+/*ҳ���Ҳ���*/
+.dvTabLst {
+    width: 890px;
+    height: 100%;
+    float: left;
+    margin-left: 10px;
+}
+.dvTabLst .pre{display:none;}
+.dvTabLst ul {
+    width: 100%;
+    float: left;
+    list-style: none;
+}
+
+.dvTabLst ul li {
+    width: 90%;
+    height: 40px;
+    border-bottom: dashed 1px gray;
+    text-decoration: none;
+    font: 12px/24px Verdana, Arial, Helvetica, sans-serif;
+    color: #333;
+}
+
+.dvTabLst ul li a, .dvTabLst ul li a:link, .dvTabLst ul li a:active, .dvTabLst ul li a:hover, .dvTabLst ul li a:visited {
+    text-decoration: none;
+    font: 12px/24px Verdana, Arial, Helvetica, sans-serif;
+    color: #333;
+    background: url("../img/Icon_right.jpg") no-repeat left 8px;
+    text-indent: 2em;
+    display: block;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 10px;
+}
+
+.spType, .spTime {
+    display: block;
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    padding-right: 20px;
+}
+
+.spType {
+
+}
+
+.spTime {
+    color: #999;
+}
