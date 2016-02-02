@@ -23,9 +23,6 @@ public class BidService {
     @Autowired
     private BidDao bidDao;
 
-//    @Autowired
-//    private IRedisService redisService;
-
 
     public List<Digest> getDigestList(Long id, Integer type, Integer page,
                                       Integer pageSize, String time) {
@@ -83,10 +80,8 @@ public class BidService {
 
         int rows = 0;
         try {
-            logger.error("url: {}",url);
             rows = bidDao.insert(url, title, content, time, city, siteName, type);
         }catch (Exception e){
-//            TODO 已经检验过 无问题 log有点多 暂时不显示
             logger.error(e.getMessage(),e);
         }
         return rows;

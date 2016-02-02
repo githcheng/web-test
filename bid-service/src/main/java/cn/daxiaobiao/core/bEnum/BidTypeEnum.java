@@ -9,6 +9,7 @@ public enum BidTypeEnum {
     ZHONGBIAO(2,"中标公告"),
     BIANGEN(3,"更公告"),
     NEW(4,"新闻资讯"),
+    POLICY(5,"政策法规"),
     OTHER(100,"其它信息"),
     ;
 

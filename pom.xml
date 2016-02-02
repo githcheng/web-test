@@ -12,6 +12,7 @@
     <modules>
     	<module>bid-api-server</module>
 		<module>bid-service</module>
+		<module>raw-service</module>
 	</modules>
     
     <properties>

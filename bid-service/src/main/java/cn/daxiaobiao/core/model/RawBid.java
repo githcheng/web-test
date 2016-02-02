@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  */
 public class RawBid {
 
-    private String id;
+    private Long id;
     private String url;
     private String content;
     private String jsonData;
@@ -27,11 +27,11 @@ public class RawBid {
                 '}';
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

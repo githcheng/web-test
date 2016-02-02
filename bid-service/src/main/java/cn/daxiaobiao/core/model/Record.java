@@ -7,22 +7,30 @@ import java.sql.Timestamp;
  */
 public class Record {
 
-    Timestamp startTime;
-    Timestamp endTime;
+    Long offset;
+    Timestamp createTime;
 
-    public Timestamp getStartTime() {
-        return startTime;
+    @Override
+    public String toString() {
+        return "Record{" +
+                "offset=" + offset +
+                ", createTime=" + createTime +
+                '}';
     }
 
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
+    public Long getOffset() {
+        return offset;
     }
 
-    public Timestamp getEndTime() {
-        return endTime;
+    public void setOffset(Long offset) {
+        this.offset = offset;
     }
 
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
     }
 }

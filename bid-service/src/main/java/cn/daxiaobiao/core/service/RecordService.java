@@ -17,8 +17,8 @@ public class RecordService {
     private RecordDao recordDao;
 
 
-    public int addRecord(Timestamp start, Timestamp end){
-        return recordDao.insert(start,end);
+    public int addRecord(Record record){
+        return recordDao.insert(record);
     }
 
     public Record getLastRecord(){
