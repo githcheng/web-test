@@ -15,7 +15,7 @@ import java.util.List;
 public interface RawDAO {
 
     @Select("select url, content, json_data,create_date,site_type_names " +
-            " from t_b_data limit #{offset}, #{size}")
+            " from t_b_data where id>#{offset} limit #{size}")
     public List<RawBid> getRawBidListByRange(@Param("offset") Long offset,
                                              @Param("size") Integer size);
 

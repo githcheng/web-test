@@ -11,19 +11,16 @@ import java.sql.Timestamp;
 /**
  * Created by guojiang on 2015/3/8.
  */
-@Document(indexName = "daxiaobiao",type = "bid",indexStoreType = "memory", shards = 1, replicas = 0, refreshInterval = "-1")
+@Document(indexName = "daxiaobiao",type = "bid", shards = 1, replicas = 0)
 public class Bid {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Field(type= FieldType.Long, index=FieldIndex.not_analyzed,store = true)
     private Long id;
 
     private String url;
 
-    @Field(type = FieldType.String,index=FieldIndex.analyzed,
-            indexAnalyzer="ik", searchAnalyzer="ik", store = true)
     private String title;
 
     @Field(type = FieldType.String,index=FieldIndex.analyzed,
@@ -33,12 +30,10 @@ public class Bid {
 
     private Integer city;
 
-    @Field(type= FieldType.String, store = true)
     private Timestamp time;
 
     private String siteName;
 
-    @Field(type= FieldType.Integer, store = true)
     private Integer type;
 
     public Bid() {
