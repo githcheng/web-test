@@ -88,6 +88,8 @@
 						aEnd.id=id+"-end";
 						aEnd.innerHTML="尾页";
 						_ele.appendChild(aEnd);
+						//回到顶端
+						document.body.scrollTop=0;
 					},
 					init: function() {
 						var d = document,_t= this,_boxId=_t.id;

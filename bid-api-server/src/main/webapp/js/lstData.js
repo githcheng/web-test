@@ -81,18 +81,22 @@ function GetArticle() {
     var type = GetQueryString("artType");
     var url = "/detail/get?id=" + id + "&type=" + type;
     GetJsonData(url, function (data) {
-        eval("json=data.info");
-        var artHtml = ""
-            + "<div class=\"artTle\">"
-            + "  <h2 class=\"artTitle\">" + json.title + "</h2>"
-            + "  </div>"
-            + "  <div class=\"artBlock\">"
-            + "<div class=\"dvPubTime\"><span class=\"spPutTime\" >" + json.time + "</span></div>"
-            //+ "<div class=\"artBlockHead\">项目信息</div>"
-            + "<div class=\"artBlockBody artCont\" id=\"artCont\">"
-            + json.content
-            + "</div>"
-            + "      </div>";
+    	var artHtml = "";
+    	if(data.code==10001){artHtml=data.msg;}
+    	else{
+	         var json=data.info;
+	         artHtml = ""
+	            + "<div class=\"artTle\">"
+	            + "  <h2 class=\"artTitle\">" + json.title + "</h2>"
+	            + "  </div>"
+	            + "  <div class=\"artBlock\">"
+	            + "<div class=\"dvPubTime\"><span class=\"spPutTime\" >" + json.time + "</span></div>"
+	            //+ "<div class=\"artBlockHead\">项目信息</div>"
+	            + "<div class=\"artBlockBody artCont\" id=\"artCont\">"
+	            + json.content
+	            + "</div>"
+	            + "      </div>";
+      }
         fnGetEleById("artContent").innerHTML = artHtml;
     });
 }

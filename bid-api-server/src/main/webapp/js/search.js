@@ -31,7 +31,7 @@ function fnSeaBtnInit(){
     	GetWord(st.value);
     }
     else{
-    	var vUrl = "Page/searchLst.html?place="+parTagName+"&type=search&ctn="+st.value; 
+    	var vUrl = "searchLst.html?place="+parTagName+"&type=search&ctn="+st.value; 
     	window.open(vUrl);
     }	
 }
