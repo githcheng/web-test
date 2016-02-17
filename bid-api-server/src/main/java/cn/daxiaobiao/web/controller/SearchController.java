@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("")
 public class SearchController {
-    @RequestMapping("/tabLst")
+    @RequestMapping("/searchLst")
     public ModelAndView index(HttpServletRequest request,
             HttpServletResponse response){
         return new ModelAndView("/Page/searchLst",null);
