@@ -59,11 +59,25 @@ public class AddBidService {
             for(RawBid rawBid : rawBidList){
                 saveBid(rawBid, objectMapper);
             }
-            lastRecord.setOffset(lastRecord.getOffset()+rawBidList.size());
+            long max = max(rawBidList);
+            logger.info("lastRecord:{}, max:{}", lastRecord,max);
+            lastRecord.setOffset(max);
             saveRecord(lastRecord);
         }
     }
 
+    private long max(List<RawBid> rawBidList){
+        long max = -1;
+        if (CollectionUtils.isEmpty(rawBidList)){
+            throw new RuntimeException("ddd");
+        }
+        for(RawBid rawBid : rawBidList){
+            if(max < rawBid.getId()){
+                max = rawBid.getId();
+            }
+        }
+        return max;
+    }
 
     private int saveBid(RawBid rawBid, ObjectMapper objectMapper){
         Bid bid = this.getBid(rawBid, objectMapper);
