@@ -6,6 +6,7 @@ import cn.daxiaobiao.core.model.RawBid;
 import cn.daxiaobiao.core.model.Record;
 import cn.daxiaobiao.core.service.BidService;
 import cn.daxiaobiao.core.service.RecordService;
+import cn.daxiaobiao.core.util.HtmlUtil;
 import cn.daxiaobiao.core.util.TypeRegexUtil;
 import cn.daxiaobiao.spider.dao.RawDAO;
 import com.fasterxml.jackson.core.JsonParser;
@@ -139,6 +140,7 @@ public class AddBidService {
         bid.setCity(0);
         bid.setTime(time);
         bid.setType(typeEnum.getId());
+        bid.setPureContent(HtmlUtil.getPureText(content));
         return bid;
     }
 }

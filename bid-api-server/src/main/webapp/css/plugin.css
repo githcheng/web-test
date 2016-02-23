@@ -1,5 +1,5 @@
 /*分页*/
 .NavNow{background: red;}
 .PageNav{height: 34px;margin-top: 20px;width:740px;text-align: center;}
-.PageNav a{display: inline-block;border: 1px solid #dcdcdc;padding: 0 10px;margin: 0 3px;background-color: #ffffff;}
+.PageNav a{display: inline-block;border: 1px solid #dcdcdc;padding:8px 12px;margin: 0 3px;background-color: #ffffff;}
 .PageNav a.On{color: #ffffff;border: 1px solid #bc1b21;background-color: #bc1b21;}

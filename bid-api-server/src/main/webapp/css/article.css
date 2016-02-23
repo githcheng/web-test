@@ -8,6 +8,12 @@
 .dvArtLft p{
 	width:878px;
 }
+.dvArtLft table{
+	margin:0px auto;
+}
+.dvArtLft table tr td p{
+	width:auto;
+}
 .dvArtRgt {
     width: 300px;
     height: 100%;

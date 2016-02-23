@@ -51,36 +51,26 @@ public class BidService {
         return bidDao.getBidById(id, type);
     }
 
-    public int insert(String url, String title,
-                      String content, Timestamp time,
-                      Integer city, String siteName,
-                      Integer type) {
-        int rows = 0;
-        try {
-            rows = bidDao.insert(url, title, content, time, city, siteName, type);
-        }catch (Exception e){
-            logger.error(e.getMessage(),e);
-        }
-        return rows;
-    }
+//    public int insert(String url, String title,
+//                      String content, Timestamp time,
+//                      Integer city, String siteName,
+//                      Integer type) {
+//        int rows = 0;
+//        try {
+//            rows = bidDao.insert(url, title, content, time, city, siteName, type);
+//        }catch (Exception e){
+//            logger.error(e.getMessage(),e);
+//        }
+//        return rows;
+//    }
 
     public int insert(Bid bid) {
-
         if (bid == null){
             return 0;
         }
-
-        String url = bid.getUrl();
-        String title = bid.getTitle();
-        String content = bid.getContent();
-        Timestamp time = bid.getTime();
-        Integer city = bid.getCity();
-        String siteName = bid.getSiteName();
-        Integer type = bid.getType();
-
         int rows = 0;
         try {
-            rows = bidDao.insert(url, title, content, time, city, siteName, type);
+            rows = bidDao.insert(bid);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
         }

@@ -55,7 +55,8 @@
 							}							
 						}			
 						var _spTotal=document.createElement("span");
-						_spTotal.innerHTML="共有条"+t.total+"数据"
+						_spTotal.innerHTML="共有条"+t.total+"数据";
+						_spTotal.style["font-size"]="13px";
 						_ele.appendChild(_spTotal);
 						
 						var a=_d.createElement("a");
@@ -83,13 +84,18 @@
 						aNext.id=id+"-next";
 						aNext.innerHTML="下一页";
 						_ele.appendChild(aNext);
-						
+						/*
 						var aEnd=a.cloneNode();
 						aEnd.id=id+"-end";
 						aEnd.innerHTML="尾页";
 						_ele.appendChild(aEnd);
+						*/
 						//回到顶端
-						document.body.scrollTop=0;
+						if (navigator.userAgent.indexOf('Firefox') >= 0){
+					    	document.documentElement.scrollTop=0;
+						}else{
+							document.body.scrollTop=0;
+						}						
 					},
 					init: function() {
 						var d = document,_t= this,_boxId=_t.id;
@@ -101,11 +107,11 @@
 							
 							//如果只有一页
 							if(_pageTotal==1){return;}
-							    _evt = e || window.event;
-							    _tar = _evt.target||_evt.srcElement;
-							    
-							    _tp = _tar.id.split('-')[1];						 
-							    _bCurIndex=_t.curIndex;
+							_evt = e || window.event;
+							_tar = _evt.target||_evt.srcElement;
+							if(_tar.id==_t.id){return;}    
+							_tp = _tar.id.split('-')[1];						 
+							_bCurIndex=_t.curIndex;
 							if (_tp == "prev") {
 								//_curIndex  >0    不是第一页，切换页码数字pgSeria的显示 ,  
 								if(_bCurIndex>0){									

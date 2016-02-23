@@ -67,8 +67,7 @@ function GetWord(ctn){
 function fnGetData(pageIndex,ctn,words) {
 	var tpCode = GetQueryStringPar("type");
 	//var ctn = GetQueryStringPar("ctn");
-
-	var fr = document.getElementById("indexFrame") || window.top.document.getElementById("indexFrame");
+	//var fr = document.getElementById("indexFrame") || window.top.document.getElementById("indexFrame");
 	var pageSize = 20;
 	if (tpCode == null || tpCode == "") {
 		tpCode = 1
@@ -82,7 +81,7 @@ function fnGetData(pageIndex,ctn,words) {
 				"bool": {
 					"should": [{
 						"match": {
-							"content": ctn //此处为搜索内容
+							"pureContent": ctn //此处为搜索内容
 						}
 					}],
 					"must": [{
@@ -97,7 +96,7 @@ function fnGetData(pageIndex,ctn,words) {
 				"time",
 				"title",
 				"type",
-				"content"
+				"pureContent"
 			],
 			"from": 20*pageIndex, //此处为分页设置，如果size=20,那么 from 第一页：0；第二页：20；第三页：40
 			"size": 20, //每页显示多少个
@@ -121,7 +120,7 @@ function fnGetData(pageIndex,ctn,words) {
 			var hits = sJ.hits.hits;
 			var len = 170; //显示字符串的长度
 			var dvCtn = window.top.document.getElementById("SearchCtn");
-			dvCtn.innerHTML="";
+			dvCtn.innerHTML="<div class='searchResult'>大小标为您找到相关结果约<span>"+total+"条</span></div>";
 			for (var i = 0; i < hits.length; i++) {
 				var _source = hits[i]._source,
 					_highlight = {};
@@ -135,21 +134,25 @@ function fnGetData(pageIndex,ctn,words) {
 				}
 				var _div = "div",
 					_sp = "span",
-					_a = "a";
+					_a = "a",
+					_tleTemp="";
 				var blc = fnCteEle(_div, null, "lstBlock", null);
 	
 				var tlePre = fnCteEle(_sp, null, "lstTitlePre", fnGetTpName("[" + _source.type + "]"));
 				var tleTle = fnCteEle(_a, null, "lstTitle", _source.title);
 				tleTle.href = "article.html?artID=" + hits[i]._id + "&artType=" + _source.type + "&type=" + _source.type + "";
-				tleTle.title = _source.title;
-				tleTle.target = "_blank";
-				tleTle.innerHTML = fnSplitChars(_source.title, 20);
+				_tleTemp=tleTle.title =_source.title;
+				tleTle.target = "_blank";				
+				if (getBytesCount(_tleTemp) > 30) {
+					_tleTemp = fnSplitStr(_tleTemp, 30);
+				}
+				tleTle.innerHTML = fnLightTxt(_tleTemp, words.tokens);
 				var _tm = formatDate(_source.time,"yyyy-MM-dd") + "";
 				var pbDate = fnCteEle(_a, null, "lstPbDate", _tm);
 	
 				var lstDetail = tleTle.cloneNode(); //= fnCteEle(_div, null, "lstDetail", combineArrCtn(_highlight.content));
 				lstDetail.className = "lstDetail";
-				var tCtn =_source.content ;//_highlight.content[0];
+				var tCtn =_source.pureContent ;//_highlight.content[0];
 	
 				if (getBytesCount(tCtn) > len) {
 					tCtn = fnSplitStr(tCtn, len) + "...";

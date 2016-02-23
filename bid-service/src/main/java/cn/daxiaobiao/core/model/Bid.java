@@ -23,10 +23,12 @@ public class Bid {
 
     private String title;
 
+    private String content;
+
     @Field(type = FieldType.String,index=FieldIndex.analyzed,
             indexAnalyzer="ik", searchAnalyzer="ik",
             store = true)
-    private String content;
+    private String pureContent;
 
     private Integer city;
 
@@ -38,6 +40,14 @@ public class Bid {
 
     public Bid() {
 
+    }
+
+    public String getPureContent() {
+        return pureContent;
+    }
+
+    public void setPureContent(String pureContent) {
+        this.pureContent = pureContent;
     }
 
     public Bid(Long id, String url, String title, String content, Integer city, Timestamp time, String siteName,

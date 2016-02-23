@@ -5,6 +5,7 @@ import cn.daxiaobiao.core.model.Digest;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -37,6 +38,12 @@ public interface BidDao {
                                          @Param("limit") Integer limit
     );
 
+    @Select("select id, url, title, pure_content,time,city , site_name, type "  +
+            " from "+tableName+" where id >= #{offset_id} limit  #{limit}")
+    public List<Bid> getPureContentBidListByOffset(  @Param("offset_id") Long offset_id,
+                                          @Param("limit") Integer limit
+    );
+
     @Select("select id,url, title, content,time,city,site_name, type " +
             " from "+tableName+" where id < #{id} order by id desc limit #{offset}, #{limit}")
     public List<Digest> getDigestList(@Param("id") Long id,
@@ -51,20 +58,28 @@ public interface BidDao {
                           @Param("type") Integer type
     );
 
-    @Insert("insert into "+tableName+"(url, title, content,time,city," +
+//    @Insert("insert into "+tableName+"(url, title, content,time,city," +
+//            "site_name, type,create_time)" +
+//            " values(#{url},#{title},#{content},#{time},#{city},#{site_name},#{type},now());")
+//    public int insert(@Param("url")String url,
+//                      @Param("title")String title,
+//                      @Param("content")String content,
+//                      @Param("time")Timestamp time,
+//                      @Param("city")Integer city,
+//                      @Param("site_name")String siteName,
+//                      @Param("type") Integer type);
+
+    @Insert("insert into "+tableName+"(url, title, content,pure_content,time,city," +
             "site_name, type,create_time)" +
-            " values(#{url},#{title},#{content},#{time},#{city},#{site_name},#{type},now());")
-    public int insert(@Param("url")String url,
-                      @Param("title")String title,
-                      @Param("content")String content,
-                      @Param("time")Timestamp time,
-                      @Param("city")Integer city,
-                      @Param("site_name")String siteName,
-                      @Param("type") Integer type);
+            " values(#{url},#{title},#{content},#{pureContent},#{time},#{city},#{site_name},#{type},now());")
+    public int insert(Bid bid);
 
     @Select("select count(1) from t_bid where type = #{type}")
     int getBidTotalCountByType(@Param("type")Integer type);
 
     @Select("select count(1) from t_bid where type in (1,2,3)")
     int getBidTotalCount();
+
+    @Update("update t_bid set pure_content = #{pureContent} where id=#{id}")
+    int updatePureContent(Bid bid);
 }

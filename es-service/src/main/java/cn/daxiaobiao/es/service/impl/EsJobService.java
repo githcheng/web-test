@@ -41,12 +41,7 @@ public class EsJobService {
         start = esRecordDao.getBidId();
         while (true){
             logger.info("esjob run {} cycle", start);
-            List<Bid> bidList = bidDao.getBidListByOffset(start, limit);
-            try {
-                Thread.sleep(300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            List<Bid> bidList = bidDao.getPureContentBidListByOffset(start, limit);
             if (!CollectionUtils.isEmpty(bidList)){
                 start = max(bidList);
             } else {
@@ -54,6 +49,11 @@ public class EsJobService {
             }
             bidEsDao.add(bidList);
             esRecordDao.insert(start);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

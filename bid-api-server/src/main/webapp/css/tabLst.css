@@ -61,7 +61,10 @@
     line-height: 40px;
     padding-right: 20px;
 }
-
+.chlst .spTime{
+	line-height:24px;
+	padding-right:5px;
+}
 .spType {
 
 }
