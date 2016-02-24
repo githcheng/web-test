@@ -33,13 +33,13 @@ public interface BidDao {
     );
 
     @Select("select id, url, title, content,time,city , site_name, type "  +
-            " from "+tableName+" where id >= #{offset_id} limit  #{limit}")
+            " from "+tableName+" where id > #{offset_id} limit  #{limit}")
     public List<Bid> getBidListByOffset(  @Param("offset_id") Long offset_id,
                                          @Param("limit") Integer limit
     );
 
     @Select("select id, url, title, pure_content,time,city , site_name, type "  +
-            " from "+tableName+" where id >= #{offset_id} limit  #{limit}")
+            " from "+tableName+" where id > #{offset_id} limit  #{limit}")
     public List<Bid> getPureContentBidListByOffset(  @Param("offset_id") Long offset_id,
                                           @Param("limit") Integer limit
     );

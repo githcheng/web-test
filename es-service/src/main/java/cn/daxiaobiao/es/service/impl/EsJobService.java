@@ -40,11 +40,13 @@ public class EsJobService {
         Integer limit = 100;
         start = esRecordDao.getBidId();
         while (true){
-            logger.info("esjob run {} cycle", start);
+            logger.info("esjob run {} start point!", start);
             List<Bid> bidList = bidDao.getPureContentBidListByOffset(start, limit);
             if (!CollectionUtils.isEmpty(bidList)){
+                logger.info("cur size: {}", bidList.size());
                 start = max(bidList);
             } else {
+                logger.info("size is empty");
                 break;
             }
             bidEsDao.add(bidList);
