@@ -15,6 +15,17 @@ public class User {
     private String company;
     private Timestamp createTime;
 
+    public User(){}
+
+    public User(String user, String name, String password, String email, String phone, String company) {
+        this.user = user;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+        this.company = company;
+    }
+
     public Timestamp getCreateTime() {
         return createTime;
     }

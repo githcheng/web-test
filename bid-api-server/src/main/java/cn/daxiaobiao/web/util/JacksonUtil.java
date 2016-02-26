@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.util.StringUtils;
 
 /**
  * Created by cheng on 2015/9/17.
@@ -34,10 +35,27 @@ public class JacksonUtil {
         return objectNode;
     }
 
+    public static JsonNode ok() {
+        ObjectNode objectNode = getObjectNode();
+        objectNode.put("code", 0);
+        objectNode.put("msg","success");
+        return objectNode;
+    }
+
     public static JsonNode fail(ApiEnum apiEnum) {
         ObjectNode objectNode = getObjectNode();
         objectNode.put("code", apiEnum.getCode());
         objectNode.put("msg",apiEnum.getDesc());
+        return objectNode;
+    }
+
+    public static JsonNode fail(String msg) {
+        if (StringUtils.isEmpty(msg)){
+            msg = "接口异常";
+        }
+        ObjectNode objectNode = getObjectNode();
+        objectNode.put("code", -1);
+        objectNode.put("msg",msg);
         return objectNode;
     }
 

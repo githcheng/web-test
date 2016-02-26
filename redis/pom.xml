@@ -12,8 +12,8 @@
     </parent>
 
     <groupId>cn.daxiaobiao.system</groupId>
-    <name>bid-service</name>
-    <artifactId>bid-service</artifactId>
+    <name>redis</name>
+    <artifactId>redis</artifactId>
     <version>1.0-${project.environment}-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -24,34 +24,10 @@
 
     <dependencies>
 
-        <!-- elasticsearch -->
         <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-elasticsearch</artifactId>
-            <version>1.3.0.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-data-commons</artifactId>
-                    <groupId>org.springframework.data</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>1.10.0.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.7.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.6.0</version>
         </dependency>
 
         <dependency>
@@ -87,23 +63,6 @@
             <artifactId>commons-collections</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.29</version>
-        </dependency>
-
-        <!-- mybatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.2.8</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
-        </dependency>
 
         <!-- springframework -->
         <dependency>
@@ -213,13 +172,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>2.1.0</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.6.0</version>
         </dependency>
 
     </dependencies>

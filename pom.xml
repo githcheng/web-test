@@ -14,6 +14,7 @@
 		<module>bid-service</module>
 		<module>raw-service</module>
 		<module>es-service</module>
+		<module>redis</module>
 	</modules>
     
     <properties>

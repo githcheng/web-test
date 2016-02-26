@@ -14,4 +14,8 @@ public interface UserDao {
     @Select("select user, name,password,email,phone,company,create_time " +
             " from t_user where user=#{user}")
     User getUser(@Param("user")String user);
+
+    @Select("select user, name,password,email,phone,company,create_time " +
+            " from t_user where phone=#{phone}")
+    User getUserByPhone(@Param("phone")String phone);
 }
