@@ -87,7 +87,7 @@ public class AuthCodeController {
         String status = redisService.setex(ConstVar.smsPrefix + phone,7200, smsAuthCode);
         logger.info("status:{}, smsAuthCode:{}", status,smsAuthCode);
 
-        String text = String.format("【大小标网】您的验证码是%s，请尽快完成注册", smsAuthCode);
+        String text = String.format("【大小标网】%s会员注册短信验证码，10分钟内有效!", smsAuthCode);
         try {
             if (ConstVar.smsSwitch){
                 javaSmsApi.sendSms(text,phone);

@@ -127,7 +127,7 @@ public class LoginServiceController {
         }
 
         String password = user.getPassword();
-        String text = String.format("【大小标网】您的登录密码是%s，请妥善保管!", password);
+        String text = String.format("【大小标网】%s是您的登录密码，请妥善保管!", password);
         try {
             if (ConstVar.smsSwitch){
                 javaSmsApi.sendSms(text,phone);
