@@ -2,6 +2,7 @@ package cn.daxiaobiao.web.util;
 
 import org.springframework.util.StringUtils;
 
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +22,29 @@ public class CommonUtil {
             return true;
         }
         return false;
+    }
+
+
+    public static String generatePictureCode(){
+        int length = 6;
+        String authCode = "";
+        Random random = new Random();
+        for (int i=0;i<length;i++){
+            int s = random.nextInt(9);
+            authCode += s;
+        }
+        return authCode;
+    }
+
+    public static String generateSmsCode(){
+        int length = 4;
+        String authCode = "";
+        Random random = new Random();
+        for (int i=0;i<length;i++){
+            int s = random.nextInt(9);
+            authCode += s;
+        }
+        return authCode;
     }
 
     public static void main(String args[]){

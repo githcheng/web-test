@@ -6,4 +6,6 @@ package cn.daxiaobiao.web.util;
 public class ConstVar {
     public final static String smsPrefix="sms_";
     public final static String picturePrefix="picture_";
+
+    public static boolean smsSwitch = false;
 }

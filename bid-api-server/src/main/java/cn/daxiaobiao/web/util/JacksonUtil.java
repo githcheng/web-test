@@ -42,6 +42,13 @@ public class JacksonUtil {
         return objectNode;
     }
 
+    public static JsonNode ok(String msg) {
+        ObjectNode objectNode = getObjectNode();
+        objectNode.put("code", 0);
+        objectNode.put("msg",msg);
+        return objectNode;
+    }
+
     public static JsonNode fail(ApiEnum apiEnum) {
         ObjectNode objectNode = getObjectNode();
         objectNode.put("code", apiEnum.getCode());

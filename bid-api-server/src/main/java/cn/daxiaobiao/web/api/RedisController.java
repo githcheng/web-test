@@ -1,8 +1,7 @@
 package cn.daxiaobiao.web.api;
 
-import cn.daxiaobiao.core.service.JavaSmsApi;
 import cn.daxiaobiao.redis.IRedisService;
-import cn.daxiaobiao.redis.impl.RedisServiceImpl;
+import cn.daxiaobiao.web.util.ConstVar;
 import cn.daxiaobiao.web.util.JacksonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.util.Random;
 
 /**
  * Created by cheng on 2015/11/1.
@@ -42,6 +39,26 @@ public class RedisController {
         ObjectNode objectNode = JacksonUtil.getObjectNode();
         ObjectNode data = JacksonUtil.getObjectNode();
         data.put("key",key);
+        data.put("value",value);
+        objectNode.put("code",0);
+        objectNode.put("data",data);
+        objectNode.put("msg","success");
+        return objectNode;
+    }
+
+    @RequestMapping(value="/setSmsSwitch", method={RequestMethod.GET, RequestMethod.POST})
+    public @ResponseBody
+    JsonNode getPictureCode(HttpServletRequest request,
+                            HttpServletResponse response,
+                            @RequestParam("value") Integer value ){
+
+        if (value == 0){
+            ConstVar.smsSwitch=false;
+        } else {
+            ConstVar.smsSwitch=true;
+        }
+        ObjectNode objectNode = JacksonUtil.getObjectNode();
+        ObjectNode data = JacksonUtil.getObjectNode();
         data.put("value",value);
         objectNode.put("code",0);
         objectNode.put("data",data);

@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -54,7 +55,7 @@ public class RegisterServiceController {
             @RequestParam("authPictureCode") String authPictureCode,
             @RequestParam("authSmsCode") String authSmsCode,
             String company
-    ){
+    ) throws IOException {
 
 
         logger.info("phone:{}, username:{}, password:{}," +
@@ -100,9 +101,7 @@ public class RegisterServiceController {
         int status = userDao.insert(user);
         logger.info("insert status:{}", status);
 
-        ObjectNode objectNode = JacksonUtil.getObjectNode();
-        objectNode.put("code",0);
-        objectNode.put("msg", "success");
+        response.sendRedirect("/login");
         return JacksonUtil.ok();
     }
 }

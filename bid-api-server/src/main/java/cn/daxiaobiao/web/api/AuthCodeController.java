@@ -2,6 +2,7 @@ package cn.daxiaobiao.web.api;
 
 import cn.daxiaobiao.core.service.JavaSmsApi;
 import cn.daxiaobiao.redis.IRedisService;
+import cn.daxiaobiao.web.util.CommonUtil;
 import cn.daxiaobiao.web.util.ConstVar;
 import cn.daxiaobiao.web.util.JacksonUtil;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -31,8 +32,6 @@ public class AuthCodeController {
 
     private final Logger logger = LoggerFactory.getLogger(AuthCodeController.class);
 
-    private final static boolean smsSwitch = false;
-
     @Autowired
     private JavaSmsApi javaSmsApi;
 
@@ -46,14 +45,8 @@ public class AuthCodeController {
             @RequestParam("phone") String phone,
             @RequestParam("user") String user ){
 
-        int length = 6;
-        String authCode = "";
-        Random random = new Random();
-        for (int i=0;i<length;i++){
-            int s = random.nextInt(9);
-            authCode += s;
-        }
 
+        String authCode = CommonUtil.generatePictureCode();
         //写入redis
         String status = redisService.setex(ConstVar.picturePrefix + phone, 3600, authCode);
         logger.info("status:{}, smsAuthCode:{}", status,authCode);
@@ -87,13 +80,7 @@ public class AuthCodeController {
             return JacksonUtil.fail("图片验证码错误");
         }
 
-        int length = 4;
-        String smsAuthCode = "";
-        Random random = new Random();
-        for (int i=0;i<length;i++){
-            int s = random.nextInt(9);
-            smsAuthCode += s;
-        }
+        String smsAuthCode = CommonUtil.generateSmsCode();
         logger.info("smsAuthCode:{}", smsAuthCode);
 
         //写入redis
@@ -102,7 +89,7 @@ public class AuthCodeController {
 
         String text = String.format("【大小标网】您的验证码是%s，请尽快完成注册", smsAuthCode);
         try {
-            if (smsSwitch){
+            if (ConstVar.smsSwitch){
                 javaSmsApi.sendSms(text,phone);
             }
         } catch (IOException e) {
