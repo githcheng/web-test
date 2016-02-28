@@ -104,4 +104,58 @@ public class RegisterServiceController {
         response.sendRedirect("/login");
         return JacksonUtil.ok();
     }
+
+
+    @RequestMapping(value="/completeUserInfo", method={RequestMethod.GET, RequestMethod.POST})
+    public @ResponseBody
+    JsonNode completeUserInfo(HttpServletRequest request,
+                             HttpServletResponse response,
+                             @RequestParam("phone") String phone,
+                             @RequestParam("username")String username,
+                             @RequestParam("name")String name, // 昵称
+                             @RequestParam("email") String email,
+                             @RequestParam("company") String company) throws IOException {
+
+
+        logger.info("phone:{}, username:{}, name:{}," +
+                "email:{}, company:{}", phone, username, name, email, company);
+
+        // 验证参数合法性
+        checkArgument(phone != null, "电话号码是空值");
+        checkArgument(email != null, "邮件地址是空值");
+        checkArgument(username != null, "用户名是空值");
+
+        boolean isPhone = CommonUtil.isPhone(phone);
+        if (!isPhone){
+            return JacksonUtil.fail("手机号码格式不正确");
+        }
+
+        if (username == null){
+            username = phone;
+        }
+
+        User user = userDao.getUserByPhone(phone);
+        if (user == null){
+            // 有手机号重复的
+            return JacksonUtil.fail("您的手机号码没有被注册过了");
+        }
+        user.setUser(username == null ? "" : username);
+        user.setName(name == null ? "" : name);
+        user.setCompany(company == null ? "" : company);
+        user.setEmail(email == null ? "" : email);
+
+        int status = userDao.update(user);
+        logger.info("update status:{}", status);
+
+        HttpSession session = request.getSession();
+        session.setAttribute("username", user);
+        session.setMaxInactiveInterval(2 * 3600);  // Session保存两小时
+        Cookie cookie = new Cookie("JSESSIONID", session.getId());
+        cookie.setMaxAge(2 * 3600);  // 客户端的JSESSIONID也保存两小时
+        session.setMaxInactiveInterval(2 * 3600);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        response.sendRedirect("/");
+        return JacksonUtil.ok();
+    }
 }
