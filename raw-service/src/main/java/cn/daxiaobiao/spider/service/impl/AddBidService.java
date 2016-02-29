@@ -50,18 +50,40 @@ public class AddBidService {
         List<RawBid> rawBidList = null;
         boolean flag = true;
         while (flag){
+            boolean maxFlag = false;
             lastRecord = recordService.getLastRecord();
-            rawBidList = rawDAO.getRawBidListByRange(lastRecord.getOffset(), size);
+            Long rangeSize = rawDAO.getRangeSize(lastRecord.getOffset(), lastRecord.getOffset() + 1);
+            if (rangeSize >= size){
+                logger.info("rangeSize : {}",rangeSize);
+                rawBidList = rawDAO.getRawBidListByUpdateTime(lastRecord.getOffset(),lastRecord.getOffset()+1);
+                maxFlag = true;
+            } else {
+                rawBidList = rawDAO.getRawBidListByRange(lastRecord.getOffset(), size);
+            }
 
             if(CollectionUtils.isEmpty(rawBidList)){
+                logger.info("rawBidList is empty break;");
                 break;
             }
             logger.info("rawBidList size : {}",rawBidList.size());
             for(RawBid rawBid : rawBidList){
                 saveBid(rawBid, objectMapper);
             }
-            long max = max(rawBidList);
-            logger.info("lastRecord:{}, max:{}", lastRecord,max);
+
+            long max = lastRecord.getOffset();
+            if (maxFlag){
+                max = lastRecord.getOffset()+1;
+                logger.info("maxFlag lastRecord:{}, max:{}", lastRecord,max);
+            } else {
+                max = max(rawBidList);
+                logger.info("lastRecord:{}, max:{}", lastRecord,max);
+            }
+
+            if(CollectionUtils.isEmpty(rawBidList) || rawBidList.size() < size){
+                logger.info("rawBidList:{} less than size:{} break", rawBidList.size(),size);
+                break;
+            }
+
             lastRecord.setOffset(max);
             saveRecord(lastRecord);
         }
@@ -70,7 +92,7 @@ public class AddBidService {
     private long max(List<RawBid> rawBidList){
         long max = -1;
         if (CollectionUtils.isEmpty(rawBidList)){
-            throw new RuntimeException("ddd");
+            throw new RuntimeException("AddBidService max Exception");
         }
         for(RawBid rawBid : rawBidList){
             if(max < rawBid.getId()){

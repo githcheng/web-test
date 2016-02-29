@@ -71,7 +71,7 @@ public interface BidDao {
 
     @Insert("insert into "+tableName+"(url, title, content,pure_content,time,city," +
             "site_name, type,create_time)" +
-            " values(#{url},#{title},#{content},#{pureContent},#{time},#{city},#{site_name},#{type},now());")
+            " values(#{url},#{title},#{content},#{pureContent},#{time},#{city},#{siteName},#{type},now());")
     public int insert(Bid bid);
 
     @Select("select count(1) from t_bid where type = #{type}")

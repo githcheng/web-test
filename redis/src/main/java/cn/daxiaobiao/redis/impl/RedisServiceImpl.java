@@ -19,10 +19,10 @@ public class RedisServiceImpl implements IRedisService {
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
 	@Value("#{propertyConfigurerForRedis[redis_name_space]}")
-	private String redisNameSpace;
+	public String redisNameSpace;
 
 	@Value("#{propertyConfigurerForRedis[redis_conf_prefix]}")
-	private String redisConfPrefix;
+	public String redisConfPrefix;
 
 
 	private Redis redis;
